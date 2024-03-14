@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - 14
+
+jobs:
+  include:
+    - name: automatic_version
+      if: type = pull_request AND env(CI) != true
+      script:
+        - npm install
+        - chmod +x ./scripts/configure_and_commit.sh
+        - ./scripts/configure_and_commit.sh $TRAVIS_EVENT_TYPE $TRAVIS_REPO_SLUG
+        - chmod +x ./scripts/reintegrate.sh
+        - ./scripts/reintegrate.sh $TRAVIS_EVENT_TYPE $TRAVIS_REPO_SLUG $GH_TOKEN
