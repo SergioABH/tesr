@@ -9,7 +9,6 @@ git config --global user.name "Travis CI"
 base_branch="$TRAVIS_PULL_REQUEST_BRANCH"
 branch_name="$TRAVIS_BRANCH"
 
-
 evaluate_and_set_version() {
   if [[ $TRAVIS_EVENT_TYPE == 'pull_request' && $TRAVIS_PULL_REQUEST_MERGED == 'true' ]]; then
     case "$base_branch-$branch_name" in
@@ -18,8 +17,6 @@ evaluate_and_set_version() {
       *'fix'*) npm version patch ;;
       *) echo "Error: Invalid event or branch combination." >&2 ;;
     esac
-  else
-    echo "Invalid event. No action determined."
   fi
 }
 
