@@ -15,7 +15,7 @@ evaluate_and_set_version() {
       'qa-dev') evaluate_dev_version ;;
       'master-qa') npm version minor ;;
       *'fix'*) npm version patch ;;
-      *) echo "Error: Invalid event or branch combination." >&2 ;;
+      *) echo "Error: Invalid event or branch combination." >&2; exit 1 ;;
     esac
   fi
 }
