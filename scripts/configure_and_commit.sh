@@ -8,7 +8,7 @@ git config --global user.name "Travis CI"
 
 base_branch="$TRAVIS_PULL_REQUEST_BRANCH"
 branch_name="$TRAVIS_BRANCH"
-
+#hjdvb
 evaluate_and_set_version() {
   if [[ $TRAVIS_EVENT_TYPE == 'pull_request' && $TRAVIS_PULL_REQUEST_MERGED == 'true' ]]; then
     case "$base_branch-$branch_name" in
